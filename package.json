@@ -5,8 +5,6 @@
   "type": "module",
   "homepage": "https://retrocolours.github.io/docker-practice",
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
