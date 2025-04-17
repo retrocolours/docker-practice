@@ -1,20 +1,96 @@
-# React + Vite
+# docker-practice
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![Deploy to GitHub Pages](https://github.com/retrocolours/docker-practice/actions/workflows/deploy.yml/badge.svg)](https://github.com/retrocolours/docker-practice/actions/workflows/deploy.yml)
 
-Currently, two official plugins are available:
+## Project Description
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+A React application containerized with Docker for development, built with Vite, and deployed to GitHub Pages. This setup demonstrates a hot-reloading development workflow using Docker Compose and a CI/CD pipeline with GitHub Actions for automatic deployments.
 
-## Expanding the ESLint configuration
+## Live Demo
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+[View the live demo](https://retrocolours.github.io/docker-practice)
 
+## Technology Stack
 
+- React
+- Vite
+- Docker & Docker Compose
+- GitHub Actions
+- GitHub Pages
 
-<!-- 
-This badge displays the status of the deployment workflow for the project. 
-It is dynamically updated based on the results of the GitHub Actions workflow defined in `deploy.yml`. 
--->
+## Local Development
+
+### Prerequisites
+
+- Docker and Docker Compose installed
+- Git
+
+### Setup and Run
+
+1. Clone the repository
+
+   ```bash
+   git clone https://github.com/retrocolours/docker-practice.git
+   cd docker-practice
+   ```
+
+2. Start the Docker development environment
+
+   ```bash
+   docker-compose up
+   ```
+
+3. Open your browser and navigate to [http://localhost:5173](http://localhost:5173)
+
+## Environment Variables
+
+- `NODE_ENV` — Set to "development" (configured via `docker-compose.yml`).
+
+## Deployment
+
+This project is automatically deployed to GitHub Pages via GitHub Actions on pushes to the `main` branch.
+
+### Manual Deployment
+
+If you need to deploy manually:
+
+1. Build the application
+
+   ```bash
+   npm run build
+   ```
+
+2. Deploy to GitHub Pages
+   ```bash
+   npm run deploy
+   ```
+
+_(Note: Ensure a `deploy` script is defined in your `package.json`, e.g., `"deploy": "gh-pages -d dist"`.)_
+
+## GitHub Actions Workflow
+
+The CI/CD pipeline includes the following steps:
+
+1. Checkout code
+2. Setup Node.js environment (v20) with caching
+3. Install dependencies
+4. Build the application
+5. Upload the `dist` artifact and deploy to GitHub Pages
+
+## Configuration Details
+
+### GitHub Pages Configuration
+
+- **Base path:** `/docker-practice/` (configured in `vite.config.js`)
+- **Homepage URL:** `https://retrocolours.github.io/docker-practice`
+
+### Docker Development Configuration
+
+- **Dockerfile.dev:** Uses Node 20-alpine, installs dependencies, and runs `npm run dev -- --host` for external access.
+- **Volumes:** Mounts project directory (`.`) and `node_modules` for hot reload and dependency caching.
+- **Ports:** Maps container port `5173` to host port `5173`.
+- **Environment:** `NODE_ENV=development` set in `docker-compose.yml`.
+
+### This badge displays the status of the deployment workflow for the project.
+
 ![Deploy](https://github.com/retrocolours/docker-practice/actions/workflows/deploy.yml/badge.svg)

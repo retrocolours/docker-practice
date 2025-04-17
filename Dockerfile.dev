@@ -1,13 +1,21 @@
 # Dockerfile.dev
+# Use the official Node.js 20 Alpine image as the base image
 FROM node:20-alpine
 
+# Set the working directory inside the container
 WORKDIR /app
 
+# Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
+
+# Install the project dependencies
 RUN npm install
 
+# Copy all the project files into the container
 COPY . .
 
+# Expose port 5173 for the development server
 EXPOSE 5173
 
+# Command to start the development server and allow external access
 CMD ["npm", "run", "dev", "--", "--host"]
