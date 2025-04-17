@@ -10,3 +10,11 @@ Currently, two official plugins are available:
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+
+
+<!-- 
+This badge displays the status of the deployment workflow for the project. 
+It is dynamically updated based on the results of the GitHub Actions workflow defined in `deploy.yml`. 
+-->
+![Deploy](https://github.com/retrocolours/docker-practice/actions/workflows/deploy.yml/badge.svg)
